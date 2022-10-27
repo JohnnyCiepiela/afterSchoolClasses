@@ -4,4 +4,4 @@ GitHub URL:
 https://github.com/JohnnyCiepiela
 
 GitHub Pages:
-https://johnnyciepiela.github.io/afterSchoolClasses/
+https://johnnyciepiela.github.io/afterSchoolClasses/index.html

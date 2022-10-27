@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!--Meta elements-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, inital-scale=1.0">
+    <!--Importing Vue-->
     <script src="https://unpkg.com/vue@2.7.8/dist/vue.js"></script>
-
+    <!--CSS styling-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="mystyles.css">
 
@@ -17,6 +19,7 @@
     <div id="app">
         <header> <h1>After School Club</h1> </header>
 
+        <!--Switching from main page to checkout page-->
         <button @click="toggleShowProduct">
             {{totalItemsInTheCart}}
             <span class="fas fa-shopping-cart"></span>
@@ -38,7 +41,7 @@
                 
                 <span v-if="product.availableSpaces - totalItemsInTheCart > 0">
                     {{product.availableSpaces - totalItemsInTheCart}} spaces left</span>
-                <span v-else-if="product.availableSpaces - totalItemsInTheCart === 0">All out!</span> </p> 
+                <span v-else-if="product.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
     
                 <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
     
@@ -59,6 +62,7 @@
         let webstore = new Vue({
             el: "#app",
             data: { 
+                //The values of the product
                     sitename: "After School Club",
                     showProduct: true,
                     product: {
@@ -74,6 +78,7 @@
 
                      cart: []
             },
+            //Functionality
             methods: {
                 addItemToCart: function() {
                     this.cart.push(this.product.id);
