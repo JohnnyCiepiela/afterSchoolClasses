@@ -7,6 +7,7 @@
     <script src="https://unpkg.com/vue@2.7.8/dist/vue.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="mystyles.css">
 
     <title>After School Club</title>
 </head>
@@ -22,7 +23,7 @@
             Checkout
         </button>
 
-        <div v-if="showProduct">
+        <div id="product" v-if="showProduct">
 
             <main>
                 <figure>
@@ -33,13 +34,13 @@
                 <p><b>Location:</b> {{ product.location }}</p>
                 <p><b>Description:</b> {{ product.description }}</p>
                 <p><b>Price:</b> {{product.price}}</p>
-                <p><b>Spaces:</b></p> 
+                <p><b>Spaces:</b>
                 
                 <span v-if="product.availableSpaces - totalItemsInTheCart > 0">
                     {{product.availableSpaces - totalItemsInTheCart}} spaces left</span>
-                <span v-else-if="product.availableSpaces - totalItemsInTheCart === 0">All out!</span>
+                <span v-else-if="product.availableSpaces - totalItemsInTheCart === 0">All out!</span> </p> 
     
-                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add to the Cart</button>
+                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
     
     
             </main>
