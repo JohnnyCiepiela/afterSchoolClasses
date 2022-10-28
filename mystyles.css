@@ -1,4 +1,26 @@
-#product{
+/*#product{
     border:3px solid rgb(0, 0, 0);
     width: 300px;
+    
+}
+
+#product2{
+    border:3px solid rgb(0, 0, 0);
+    width: 300px;
+    
+}  */
+
+.float_container {
+    border: 3px solid rgb(52, 43, 43);
+    padding: 50px;
+    height:500px;
+}
+
+.float_child {
+    width:25%;
+    float: left;
+    padding: 20px;
+    border: 2px solid red;
+    margin:10px;
+
 }
