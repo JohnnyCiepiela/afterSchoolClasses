@@ -26,7 +26,9 @@
             Checkout
         </button>
 
-        <div id="product" v-if="showProduct">
+    <div class="float_container">
+
+        <div id="product" class="float_child" v-if="showProduct">
 
             <main>
                 <figure>
@@ -50,6 +52,56 @@
 
         </div>
 
+        <div id="product2" class="float_child" v-if="showProduct">
+
+            <main>
+                <figure>
+                    <img v-bind:src="product2.image" width="100px" height="=100px"> 
+                </figure>
+    
+                <h1 v-text="product2.title"></h1>
+                <p><b>Location:</b> {{ product2.location }}</p>
+                <p><b>Description:</b> {{ product2.description }}</p>
+                <p><b>Price:</b> {{product2.price}}</p>
+                <p><b>Spaces:</b>
+                
+                <span v-if="product2.availableSpaces - totalItemsInTheCart > 0">
+                    {{product2.availableSpaces - totalItemsInTheCart}} spaces left</span>
+                <span v-else-if="product2.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
+    
+                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
+    
+    
+            </main>
+
+        </div>
+
+        <div id="product3" class="float_child" v-if="showProduct">
+
+            <main>
+                <figure>
+                    <img v-bind:src="product3.image" width="100px" height="=100px"> 
+                </figure>
+    
+                <h1 v-text="product3.title"></h1>
+                <p><b>Location:</b> {{ product3.location }}</p>
+                <p><b>Description:</b> {{ product3.description }}</p>
+                <p><b>Price:</b> {{product3.price}}</p>
+                <p><b>Spaces:</b>
+                
+                <span v-if="product3.availableSpaces - totalItemsInTheCart > 0">
+                    {{product3.availableSpaces - totalItemsInTheCart}} spaces left</span>
+                <span v-else-if="product3.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
+    
+                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
+    
+    
+            </main>
+
+        </div>
+
+    </div>
+
         <div v-else>
             <h2>Welcome to the checkout page! </h2>
 
@@ -68,10 +120,32 @@
                     product: {
                         id: 1001,
                         title: "Math",
-                        location: "London",
+                        location: "Hendon",
                         description: "Fundamentals of math",
                         price: 100,
                         image: "math_icon.png",
+                        availableSpaces:5
+                        
+                     },
+
+                     product2: {
+                        id: 1002,
+                        title: "Spanish",
+                        location: "Colindale",
+                        description: "Learn Spanish!",
+                        price: 150,
+                        image: "spanish_icon.png",
+                        availableSpaces:5
+                        
+                     },
+
+                     product3: {
+                        id: 1003,
+                        title: "Cooking",
+                        location: "Harrow",
+                        description: "Cooking essentials!",
+                        price: 200,
+                        image: "cooking_icon.png",
                         availableSpaces:5
                         
                      },
