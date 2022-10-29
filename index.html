@@ -100,6 +100,102 @@
 
         </div>
 
+        <div id="product4" class="float_child" v-if="showProduct">
+
+            <main>
+                <figure>
+                    <img v-bind:src="product4.image" width="100px" height="=100px"> 
+                </figure>
+    
+                <h1 v-text="product4.title"></h1>
+                <p><b>Location:</b> {{ product4.location }}</p>
+                <p><b>Description:</b> {{ product4.description }}</p>
+                <p><b>Price:</b> {{product4.price}}</p>
+                <p><b>Spaces:</b>
+                
+                <span v-if="product4.availableSpaces - totalItemsInTheCart > 0">
+                    {{product4.availableSpaces - totalItemsInTheCart}} spaces left</span>
+                <span v-else-if="product4.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
+    
+                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
+    
+    
+            </main>
+
+        </div>
+
+        <div id="product5" class="float_child" v-if="showProduct">
+
+            <main>
+                <figure>
+                    <img v-bind:src="product5.image" width="100px" height="=100px"> 
+                </figure>
+    
+                <h1 v-text="product5.title"></h1>
+                <p><b>Location:</b> {{ product5.location }}</p>
+                <p><b>Description:</b> {{ product5.description }}</p>
+                <p><b>Price:</b> {{product5.price}}</p>
+                <p><b>Spaces:</b>
+                
+                <span v-if="product5.availableSpaces - totalItemsInTheCart > 0">
+                    {{product5.availableSpaces - totalItemsInTheCart}} spaces left</span>
+                <span v-else-if="product5.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
+    
+                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
+    
+    
+            </main>
+
+        </div>
+
+        <div id="product6" class="float_child" v-if="showProduct">
+
+            <main>
+                <figure>
+                    <img v-bind:src="product6.image" width="100px" height="=100px"> 
+                </figure>
+    
+                <h1 v-text="product6.title"></h1>
+                <p><b>Location:</b> {{ product6.location }}</p>
+                <p><b>Description:</b> {{ product6.description }}</p>
+                <p><b>Price:</b> {{product6.price}}</p>
+                <p><b>Spaces:</b>
+                
+                <span v-if="product6.availableSpaces - totalItemsInTheCart > 0">
+                    {{product6.availableSpaces - totalItemsInTheCart}} spaces left</span>
+                <span v-else-if="product6.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
+    
+                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
+    
+    
+            </main>
+
+        </div>
+
+        <div id="product7" class="float_child" v-if="showProduct">
+
+            <main>
+                <figure>
+                    <img v-bind:src="product7.image" width="100px" height="=100px"> 
+                </figure>
+    
+                <h1 v-text="product7.title"></h1>
+                <p><b>Location:</b> {{ product7.location }}</p>
+                <p><b>Description:</b> {{ product7.description }}</p>
+                <p><b>Price:</b> {{product7.price}}</p>
+                <p><b>Spaces:</b>
+                
+                <span v-if="product7.availableSpaces - totalItemsInTheCart > 0">
+                    {{product7.availableSpaces - totalItemsInTheCart}} spaces left</span>
+                <span v-else-if="product7.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
+    
+                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
+    
+    
+            </main>
+
+        </div>
+
     </div>
 
         <div v-else>
@@ -123,7 +219,7 @@
                         location: "Hendon",
                         description: "Fundamentals of math",
                         price: 100,
-                        image: "math_icon.png",
+                        image: "/images/math_icon.png",
                         availableSpaces:5
                         
                      },
@@ -134,7 +230,7 @@
                         location: "Colindale",
                         description: "Learn Spanish!",
                         price: 150,
-                        image: "spanish_icon.png",
+                        image: "/images/spanish_icon.png",
                         availableSpaces:5
                         
                      },
@@ -145,7 +241,51 @@
                         location: "Harrow",
                         description: "Cooking essentials!",
                         price: 200,
-                        image: "cooking_icon.png",
+                        image: "/images/cooking_icon.png",
+                        availableSpaces:5
+                        
+                     },
+
+                     product4: {
+                        id: 1004,
+                        title: "Arts & Crafts",
+                        location: "Wembley",
+                        description: "Express yourself at arts and crafts!",
+                        price: 175,
+                        image: "/images/art_icon.png",
+                        availableSpaces:5
+                        
+                     },
+
+                     product5: {
+                        id: 1005,
+                        title: "Biology",
+                        location: "Statford",
+                        description: "Biology description!",
+                        price: 140,
+                        image: "/images/biology_icon.png",
+                        availableSpaces:5
+                        
+                     },
+
+                     product6: {
+                        id: 1006,
+                        title: "Chemistry",
+                        location: "Kensington",
+                        description: "Chemistry description!",
+                        price: 130,
+                        image: "/images/chemistry_icon.png",
+                        availableSpaces:5
+                        
+                     },
+
+                     product7: {
+                        id: 1007,
+                        title: "Geography",
+                        location: "South Kensington",
+                        description: "Geography description!",
+                        price: 120,
+                        image: "/images/geography_icon.png",
                         availableSpaces:5
                         
                      },

@@ -13,7 +13,10 @@
 .float_container {
     border: 3px solid rgb(52, 43, 43);
     padding: 50px;
-    height:500px;
+    height:2000px;
+    /*text-align: center; */
+    margin: auto;
+  width: 80%;
 }
 
 .float_child {
