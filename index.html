@@ -28,6 +28,8 @@
 
     <div class="float_container">
 
+        <div class="all_classes">
+
         <div id="product" class="float_child" v-if="showProduct">
 
             <main>
@@ -196,6 +198,128 @@
 
         </div>
 
+        <div id="product8" class="float_child" v-if="showProduct">
+
+            <main>
+                <figure>
+                    <img v-bind:src="product8.image" width="100px" height="=100px"> 
+                </figure>
+    
+                <h1 v-text="product8.title"></h1>
+                <p><b>Location:</b> {{ product8.location }}</p>
+                <p><b>Description:</b> {{ product8.description }}</p>
+                <p><b>Price:</b> {{product8.price}}</p>
+                <p><b>Spaces:</b>
+                
+                <span v-if="product8.availableSpaces - totalItemsInTheCart > 0">
+                    {{product8.availableSpaces - totalItemsInTheCart}} spaces left</span>
+                <span v-else-if="product8.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
+    
+                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
+    
+    
+            </main>
+
+        </div>
+
+        <div id="product9" class="float_child" v-if="showProduct">
+
+            <main>
+                <figure>
+                    <img v-bind:src="product9.image" width="100px" height="=100px"> 
+                </figure>
+    
+                <h1 v-text="product9.title"></h1>
+                <p><b>Location:</b> {{ product9.location }}</p>
+                <p><b>Description:</b> {{ product9.description }}</p>
+                <p><b>Price:</b> {{product9.price}}</p>
+                <p><b>Spaces:</b>
+                
+                <span v-if="product9.availableSpaces - totalItemsInTheCart > 0">
+                    {{product9.availableSpaces - totalItemsInTheCart}} spaces left</span>
+                <span v-else-if="product9.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
+    
+                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
+    
+    
+            </main>
+
+        </div>
+
+        <div id="product10" class="float_child" v-if="showProduct">
+
+            <main>
+                <figure>
+                    <img v-bind:src="product10.image" width="100px" height="=100px"> 
+                </figure>
+    
+                <h1 v-text="product10.title"></h1>
+                <p><b>Location:</b> {{ product10.location }}</p>
+                <p><b>Description:</b> {{ product10.description }}</p>
+                <p><b>Price:</b> {{product10.price}}</p>
+                <p><b>Spaces:</b>
+                
+                <span v-if="product10.availableSpaces - totalItemsInTheCart > 0">
+                    {{product10.availableSpaces - totalItemsInTheCart}} spaces left</span>
+                <span v-else-if="product10.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
+    
+                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
+    
+    
+            </main>
+
+        </div>
+
+        <div id="product11" class="float_child" v-if="showProduct">
+
+            <main>
+                <figure>
+                    <img v-bind:src="product11.image" width="100px" height="=100px"> 
+                </figure>
+    
+                <h1 v-text="product11.title"></h1>
+                <p><b>Location:</b> {{ product11.location }}</p>
+                <p><b>Description:</b> {{ product11.description }}</p>
+                <p><b>Price:</b> {{product11.price}}</p>
+                <p><b>Spaces:</b>
+                
+                <span v-if="product11.availableSpaces - totalItemsInTheCart > 0">
+                    {{product11.availableSpaces - totalItemsInTheCart}} spaces left</span>
+                <span v-else-if="product11.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
+    
+                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
+    
+    
+            </main>
+
+        </div>
+
+        <div id="product12" class="float_child" v-if="showProduct">
+
+            <main>
+                <figure>
+                    <img v-bind:src="product12.image" width="100px" height="=100px"> 
+                </figure>
+    
+                <h1 v-text="product12.title"></h1>
+                <p><b>Location:</b> {{ product12.location }}</p>
+                <p><b>Description:</b> {{ product12.description }}</p>
+                <p><b>Price:</b> {{product12.price}}</p>
+                <p><b>Spaces:</b>
+                
+                <span v-if="product12.availableSpaces - totalItemsInTheCart > 0">
+                    {{product12.availableSpaces - totalItemsInTheCart}} spaces left</span>
+                <span v-else-if="product12.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
+    
+                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
+    
+    
+            </main>
+
+        </div>
+
+    </div>
+
     </div>
 
         <div v-else>
@@ -286,6 +410,61 @@
                         description: "Geography description!",
                         price: 120,
                         image: "/images/geography_icon.png",
+                        availableSpaces:5
+                        
+                     },
+
+                     product8: {
+                        id: 1008,
+                        title: "History",
+                        location: "Greenwich",
+                        description: "History description!",
+                        price: 100,
+                        image: "/images/history_icon.png",
+                        availableSpaces:5
+                        
+                     },
+
+                     product9: {
+                        id: 1009,
+                        title: "Photography",
+                        location: "Camden",
+                        description: "Photography description!",
+                        price: 165,
+                        image: "/images/photography_icon.png",
+                        availableSpaces:5
+                        
+                     },
+
+                     product10: {
+                        id: 1010,
+                        title: "Physics",
+                        location: "Hackney",
+                        description: "Physics description!",
+                        price: 170,
+                        image: "/images/physics_icon.png",
+                        availableSpaces:5
+                        
+                     },
+
+                     product11: {
+                        id: 1011,
+                        title: "Business",
+                        location: "Islington",
+                        description: "Business description!",
+                        price: 200,
+                        image: "/images/business_icon.png",
+                        availableSpaces:5
+                        
+                     },
+
+                     product12: {
+                        id: 1012,
+                        title: "Zoology",
+                        location: "Hounslow",
+                        description: "Zoology description!",
+                        price: 125,
+                        image: "/images/zoology_icon.png",
                         availableSpaces:5
                         
                      },
