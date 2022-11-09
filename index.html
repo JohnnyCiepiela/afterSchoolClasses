@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!--Meta elements-->
     <meta charset="UTF-8">
@@ -7,6 +8,7 @@
     <meta name="viewport" content="width=device-width, inital-scale=1.0">
     <!--Importing Vue-->
     <script src="https://unpkg.com/vue@2.7.8/dist/vue.js"></script>
+    <script src="lessons.js"></script>
     <!--CSS styling-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="mystyles.css">
@@ -16,8 +18,10 @@
 
 <body>
 
-<div id="app">
-        <header> <h1>After School Club</h1> </header>
+    <div id="app">
+        <header>
+            <h1>After School Club</h1>
+        </header>
 
         <!--Switching from main page to checkout page-->
         <button @click="toggleShowProduct">
@@ -26,301 +30,53 @@
             Checkout
         </button>
 
-    <div class="float_container" v-if="showProduct">
+        <div v-if="showProduct" class="float_container">
 
-        <div class="all_classes" >
 
-        <div id="product" class="float_child" v-if="showProduct">
 
-            <main>
-                <figure>
-                    <img v-bind:src="product.image" width="100px" height="=100px"> 
-                </figure>
-    
-                <h1 v-text="product.title"></h1>
-                <p><b>Location:</b> {{ product.location }}</p>
-                <p><b>Description:</b> {{ product.description }}</p>
-                <p><b>Price:</b> {{product.price}}</p>
-                <p><b>Spaces:</b>
-                
-                <span v-if="product.availableSpaces - totalItemsInTheCart > 0">
-                    {{product.availableSpaces - totalItemsInTheCart}} spaces left</span>
-                <span v-else-if="product.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
-    
-                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
-    
-    
-            </main>
-
-        </div>
-
-        <div id="product2" class="float_child" v-if="showProduct">
 
             <main>
-                <figure>
-                    <img v-bind:src="product2.image" width="100px" height="=100px"> 
-                </figure>
-    
-                <h1 v-text="product2.title"></h1>
-                <p><b>Location:</b> {{ product2.location }}</p>
-                <p><b>Description:</b> {{ product2.description }}</p>
-                <p><b>Price:</b> {{product2.price}}</p>
-                <p><b>Spaces:</b>
-                
-                <span v-if="product2.availableSpaces - totalItemsInTheCart > 0">
-                    {{product2.availableSpaces - totalItemsInTheCart}} spaces left</span>
-                <span v-else-if="product2.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
-    
-                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
-    
-    
+
+                <div v-for="lesson in sortedLessons" class="float_child">
+
+                    <figure>
+                        <img v-bind:src="lesson.image" width="100px" height="=100px">
+                    </figure>
+
+                    <h1 v-text="lesson.title"></h1>
+                    <p><b>Location:</b> {{ lesson.location }}</p>
+                    <p><b>Description:</b> {{ lesson.description }}</p>
+                    <p><b>Price:</b> {{lesson.price}}</p>
+
+
+
+                    <button v-on:click="addItemToCart(lesson)" v-if="canAddToCart(lesson)">
+                        Add to the Cart</button>
+
+
+                    <button v-else disabled>Add to the Cart</button>
+
+                    <span v-if="classesLeft(lesson) === 0">
+                        All out!</span>
+
+                    <span v-else-if="classesLeft(lesson) < 3">
+                        Only {{classesLeft(lesson)}} left!</span>
+
+                    <span v-else>
+                        Buy now!</span>
+
+                    <div>
+                        <span v-for="n in lesson.rating"> ★ </span>
+                        <span v-for="n in 5 - lesson.rating"> ☆ </span>
+                    </div>
+
+                </div>
             </main>
 
-        </div>
 
-        <div id="product3" class="float_child" v-if="showProduct">
 
-            <main>
-                <figure>
-                    <img v-bind:src="product3.image" width="100px" height="=100px"> 
-                </figure>
-    
-                <h1 v-text="product3.title"></h1>
-                <p><b>Location:</b> {{ product3.location }}</p>
-                <p><b>Description:</b> {{ product3.description }}</p>
-                <p><b>Price:</b> {{product3.price}}</p>
-                <p><b>Spaces:</b>
-                
-                <span v-if="product3.availableSpaces - totalItemsInTheCart > 0">
-                    {{product3.availableSpaces - totalItemsInTheCart}} spaces left</span>
-                <span v-else-if="product3.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
-    
-                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
-    
-    
-            </main>
 
         </div>
-
-        <div id="product4" class="float_child" v-if="showProduct">
-
-            <main>
-                <figure>
-                    <img v-bind:src="product4.image" width="100px" height="=100px"> 
-                </figure>
-    
-                <h1 v-text="product4.title"></h1>
-                <p><b>Location:</b> {{ product4.location }}</p>
-                <p><b>Description:</b> {{ product4.description }}</p>
-                <p><b>Price:</b> {{product4.price}}</p>
-                <p><b>Spaces:</b>
-                
-                <span v-if="product4.availableSpaces - totalItemsInTheCart > 0">
-                    {{product4.availableSpaces - totalItemsInTheCart}} spaces left</span>
-                <span v-else-if="product4.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
-    
-                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
-    
-    
-            </main>
-
-        </div>
-
-        <div id="product5" class="float_child" v-if="showProduct">
-
-            <main>
-                <figure>
-                    <img v-bind:src="product5.image" width="100px" height="=100px"> 
-                </figure>
-    
-                <h1 v-text="product5.title"></h1>
-                <p><b>Location:</b> {{ product5.location }}</p>
-                <p><b>Description:</b> {{ product5.description }}</p>
-                <p><b>Price:</b> {{product5.price}}</p>
-                <p><b>Spaces:</b>
-                
-                <span v-if="product5.availableSpaces - totalItemsInTheCart > 0">
-                    {{product5.availableSpaces - totalItemsInTheCart}} spaces left</span>
-                <span v-else-if="product5.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
-    
-                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
-    
-    
-            </main>
-
-        </div>
-
-        <div id="product6" class="float_child" v-if="showProduct">
-
-            <main>
-                <figure>
-                    <img v-bind:src="product6.image" width="100px" height="=100px"> 
-                </figure>
-    
-                <h1 v-text="product6.title"></h1>
-                <p><b>Location:</b> {{ product6.location }}</p>
-                <p><b>Description:</b> {{ product6.description }}</p>
-                <p><b>Price:</b> {{product6.price}}</p>
-                <p><b>Spaces:</b>
-                
-                <span v-if="product6.availableSpaces - totalItemsInTheCart > 0">
-                    {{product6.availableSpaces - totalItemsInTheCart}} spaces left</span>
-                <span v-else-if="product6.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
-    
-                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
-    
-    
-            </main>
-
-        </div>
-
-        <div id="product7" class="float_child" v-if="showProduct">
-
-            <main>
-                <figure>
-                    <img v-bind:src="product7.image" width="100px" height="=100px"> 
-                </figure>
-    
-                <h1 v-text="product7.title"></h1>
-                <p><b>Location:</b> {{ product7.location }}</p>
-                <p><b>Description:</b> {{ product7.description }}</p>
-                <p><b>Price:</b> {{product7.price}}</p>
-                <p><b>Spaces:</b>
-                
-                <span v-if="product7.availableSpaces - totalItemsInTheCart > 0">
-                    {{product7.availableSpaces - totalItemsInTheCart}} spaces left</span>
-                <span v-else-if="product7.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
-    
-                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
-    
-    
-            </main>
-
-        </div>
-
-        <div id="product8" class="float_child" v-if="showProduct">
-
-            <main>
-                <figure>
-                    <img v-bind:src="product8.image" width="100px" height="=100px"> 
-                </figure>
-    
-                <h1 v-text="product8.title"></h1>
-                <p><b>Location:</b> {{ product8.location }}</p>
-                <p><b>Description:</b> {{ product8.description }}</p>
-                <p><b>Price:</b> {{product8.price}}</p>
-                <p><b>Spaces:</b>
-                
-                <span v-if="product8.availableSpaces - totalItemsInTheCart > 0">
-                    {{product8.availableSpaces - totalItemsInTheCart}} spaces left</span>
-                <span v-else-if="product8.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
-    
-                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
-    
-    
-            </main>
-
-        </div>
-
-        <div id="product9" class="float_child" v-if="showProduct">
-
-            <main>
-                <figure>
-                    <img v-bind:src="product9.image" width="100px" height="=100px"> 
-                </figure>
-    
-                <h1 v-text="product9.title"></h1>
-                <p><b>Location:</b> {{ product9.location }}</p>
-                <p><b>Description:</b> {{ product9.description }}</p>
-                <p><b>Price:</b> {{product9.price}}</p>
-                <p><b>Spaces:</b>
-                
-                <span v-if="product9.availableSpaces - totalItemsInTheCart > 0">
-                    {{product9.availableSpaces - totalItemsInTheCart}} spaces left</span>
-                <span v-else-if="product9.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
-    
-                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
-    
-    
-            </main>
-
-        </div>
-
-        <div id="product10" class="float_child" v-if="showProduct">
-
-            <main>
-                <figure>
-                    <img v-bind:src="product10.image" width="100px" height="=100px"> 
-                </figure>
-    
-                <h1 v-text="product10.title"></h1>
-                <p><b>Location:</b> {{ product10.location }}</p>
-                <p><b>Description:</b> {{ product10.description }}</p>
-                <p><b>Price:</b> {{product10.price}}</p>
-                <p><b>Spaces:</b>
-                
-                <span v-if="product10.availableSpaces - totalItemsInTheCart > 0">
-                    {{product10.availableSpaces - totalItemsInTheCart}} spaces left</span>
-                <span v-else-if="product10.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
-    
-                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
-    
-    
-            </main>
-
-        </div>
-
-        <div id="product11" class="float_child" v-if="showProduct">
-
-            <main>
-                <figure>
-                    <img v-bind:src="product11.image" width="100px" height="=100px"> 
-                </figure>
-    
-                <h1 v-text="product11.title"></h1>
-                <p><b>Location:</b> {{ product11.location }}</p>
-                <p><b>Description:</b> {{ product11.description }}</p>
-                <p><b>Price:</b> {{product11.price}}</p>
-                <p><b>Spaces:</b>
-                
-                <span v-if="product11.availableSpaces - totalItemsInTheCart > 0">
-                    {{product11.availableSpaces - totalItemsInTheCart}} spaces left</span>
-                <span v-else-if="product11.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
-    
-                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
-    
-    
-            </main>
-
-        </div>
-
-        <div id="product12" class="float_child" v-if="showProduct">
-
-            <main>
-                <figure>
-                    <img v-bind:src="product12.image" width="100px" height="=100px"> 
-                </figure>
-    
-                <h1 v-text="product12.title"></h1>
-                <p><b>Location:</b> {{ product12.location }}</p>
-                <p><b>Description:</b> {{ product12.description }}</p>
-                <p><b>Price:</b> {{product12.price}}</p>
-                <p><b>Spaces:</b>
-                
-                <span v-if="product12.availableSpaces - totalItemsInTheCart > 0">
-                    {{product12.availableSpaces - totalItemsInTheCart}} spaces left</span>
-                <span v-else-if="product12.availableSpaces - totalItemsInTheCart === 0">Out of spaces</span> </p> 
-    
-                <button v-on:click="addItemToCart" v-bind:disabled="!canAddToCart">Add the lesson</button>
-    
-    
-            </main>
-
-        </div>
-
-    </div>
-
-    </div>
 
         <div v-else>
             <h2>Welcome to the checkout page! </h2>
@@ -340,51 +96,78 @@
             <button @click="submitCheckoutForm">Place the order</button>
 
 
-         </div>
+        </div>
 
-</div>
+    </div>
 
     <script>
         let webstore = new Vue({
             el: "#app",
-            data: { 
+            data: {
                 //The values of the product
-                    sitename: "After School Club",
-                    showProduct: true,
-                    
-                    lessons: lessons,
+                sitename: "After School Club",
+                showProduct: true,
 
-                     cart: [],
+                lessons: lessons,
 
-                     order: {
-                        name: " ",
-                        phone_number: " ",
-                     },
+                cart: [],
+
+                order: {
+                    name: " ",
+                    phone_number: " ",
+                },
             },
             //Functionality
             methods: {
-                addItemToCart: function() {
-                    this.cart.push(this.product.id);
+                addItemToCart: function (lesson) {
+                    this.cart.push(lesson.id);
 
                 },
                 toggleShowProduct() {
-                    this.showProduct=this.showProduct ? false : true;
+                    this.showProduct = this.showProduct ? false : true;
 
                 },
                 submitCheckoutForm() {
                     alert("You have placed your order!");
+                },
+                canAddToCart(lesson) {
+                    return lesson.availableSpaces > this.cartCount(lesson.id);
+                },
+                cartCount(id) {
+                    let count = 0;
+                    for (let i = 0; i < this.cart.length; i++) {
+                        if (this.cart[i] === id) {
+                            count++;
+                        }
+
+                    }
+                    return count;
+
+                },
+                classesLeft(lesson) {
+                    return lesson.availableSpaces - this.cartCount(lesson.id);
+
                 }
 
 
             },
             computed: {
-                totalItemsInTheCart: function() {
+                totalItemsInTheCart: function () {
                     return this.cart.length || " ";
 
                 },
-                canAddToCart() {
-                    return this.product.availableSpaces > this.totalItemsInTheCart;
+                sortedLessons() {
+
+                    function compare(a, b) {
+                        if (a.price > b.price) return -1;
+                        if (a.price < b.price) return 1;
+                        return 0;
+
+                    }
+                    return this.lessons.sort(compare);
+
                 }
+
 
             }
         })
@@ -392,4 +175,5 @@
     </script>
 
 </body>
+
 </html>
