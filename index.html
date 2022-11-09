@@ -16,7 +16,7 @@
 
 <body>
 
-    <div id="app">
+<div id="app">
         <header> <h1>After School Club</h1> </header>
 
         <!--Switching from main page to checkout page-->
@@ -26,9 +26,9 @@
             Checkout
         </button>
 
-    <div class="float_container">
+    <div class="float_container" v-if="showProduct">
 
-        <div class="all_classes">
+        <div class="all_classes" >
 
         <div id="product" class="float_child" v-if="showProduct">
 
@@ -325,10 +325,24 @@
         <div v-else>
             <h2>Welcome to the checkout page! </h2>
 
+            <p>
+                <strong>Name:</strong>
+                <input type="text" v-model.trim="order.name">
+            </p>
+
+            <p>
+                <strong>Phone:</strong>
+                <input type="text" v-model.trim="order.phone_number">
+            </p>
+
+
+            <!--<button v-on:click="submitCheckoutForm">Place the order</button>-->
+            <button @click="submitCheckoutForm">Place the order</button>
+
 
          </div>
 
-    </div>
+</div>
 
     <script>
         let webstore = new Vue({
@@ -337,139 +351,15 @@
                 //The values of the product
                     sitename: "After School Club",
                     showProduct: true,
-                    product: {
-                        id: 1001,
-                        title: "Math",
-                        location: "Hendon",
-                        description: "Fundamentals of math",
-                        price: 100,
-                        image: "/images/math_icon.png",
-                        availableSpaces:5
-                        
-                     },
+                    
+                    lessons: lessons,
 
-                     product2: {
-                        id: 1002,
-                        title: "Spanish",
-                        location: "Colindale",
-                        description: "Learn Spanish!",
-                        price: 150,
-                        image: "/images/spanish_icon.png",
-                        availableSpaces:5
-                        
-                     },
+                     cart: [],
 
-                     product3: {
-                        id: 1003,
-                        title: "Cooking",
-                        location: "Harrow",
-                        description: "Cooking essentials!",
-                        price: 200,
-                        image: "/images/cooking_icon.png",
-                        availableSpaces:5
-                        
+                     order: {
+                        name: " ",
+                        phone_number: " ",
                      },
-
-                     product4: {
-                        id: 1004,
-                        title: "Arts & Crafts",
-                        location: "Wembley",
-                        description: "Express yourself at arts and crafts!",
-                        price: 175,
-                        image: "/images/art_icon.png",
-                        availableSpaces:5
-                        
-                     },
-
-                     product5: {
-                        id: 1005,
-                        title: "Biology",
-                        location: "Statford",
-                        description: "Biology description!",
-                        price: 140,
-                        image: "/images/biology_icon.png",
-                        availableSpaces:5
-                        
-                     },
-
-                     product6: {
-                        id: 1006,
-                        title: "Chemistry",
-                        location: "Kensington",
-                        description: "Chemistry description!",
-                        price: 130,
-                        image: "/images/chemistry_icon.png",
-                        availableSpaces:5
-                        
-                     },
-
-                     product7: {
-                        id: 1007,
-                        title: "Geography",
-                        location: "South Kensington",
-                        description: "Geography description!",
-                        price: 120,
-                        image: "/images/geography_icon.png",
-                        availableSpaces:5
-                        
-                     },
-
-                     product8: {
-                        id: 1008,
-                        title: "History",
-                        location: "Greenwich",
-                        description: "History description!",
-                        price: 100,
-                        image: "/images/history_icon.png",
-                        availableSpaces:5
-                        
-                     },
-
-                     product9: {
-                        id: 1009,
-                        title: "Photography",
-                        location: "Camden",
-                        description: "Photography description!",
-                        price: 165,
-                        image: "/images/photography_icon.png",
-                        availableSpaces:5
-                        
-                     },
-
-                     product10: {
-                        id: 1010,
-                        title: "Physics",
-                        location: "Hackney",
-                        description: "Physics description!",
-                        price: 170,
-                        image: "/images/physics_icon.png",
-                        availableSpaces:5
-                        
-                     },
-
-                     product11: {
-                        id: 1011,
-                        title: "Business",
-                        location: "Islington",
-                        description: "Business description!",
-                        price: 200,
-                        image: "/images/business_icon.png",
-                        availableSpaces:5
-                        
-                     },
-
-                     product12: {
-                        id: 1012,
-                        title: "Zoology",
-                        location: "Hounslow",
-                        description: "Zoology description!",
-                        price: 125,
-                        image: "/images/zoology_icon.png",
-                        availableSpaces:5
-                        
-                     },
-
-                     cart: []
             },
             //Functionality
             methods: {
@@ -480,6 +370,9 @@
                 toggleShowProduct() {
                     this.showProduct=this.showProduct ? false : true;
 
+                },
+                submitCheckoutForm() {
+                    alert("You have placed your order!");
                 }
 
 
