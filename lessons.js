@@ -16,7 +16,7 @@ let lessons = [
         "title": "Spanish",
         "location": "Colindale",
         "description": "Learn Spanish!",
-        "price": 150,
+        "price": 155,
         "image": "/images/spanish_icon.png",
         "availableSpaces":5,
         "rating": 3
