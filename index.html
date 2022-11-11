@@ -24,11 +24,13 @@
         </header>
 
         <!--Switching from main page to checkout page-->
-        <button @click="toggleShowProduct">
+        <button @click="toggleShowProduct" v-bind:disabled="!canCheckout">
             {{totalItemsInTheCart}}
             <span class="fas fa-shopping-cart"></span>
             Checkout
         </button>
+
+
 
         <div v-if="showProduct" class="float_container">
 
@@ -79,7 +81,41 @@
         </div>
 
         <div v-else>
-            <h2>Welcome to the checkout page! </h2>
+
+            <h2> Here are the lessons you have picked: </h2>
+
+
+            <!-- <ul>
+                    <li v-for="lesson in cart" :key="lesson.title">
+                         <p v-text="lesson.title"> class at {{lesson.location}}</p> 
+
+                        <p><b>{{lesson.title}}</b> class at <b>{{lesson.location}}</b> for <b>{{lesson.price}}</b> pounds
+                        
+                            <button @click="removeLesson(lesson)"> Remove </button> 
+                        
+                        </p>
+                    </li>
+                </ul> -->
+
+
+            <div v-for="lesson in lessons">
+
+                <ul v-for="(item,index) in cart">
+
+
+                    <li v-if="lesson.id === item">
+                        <b>{{lesson.title}}</b> class at <b>{{lesson.location}}</b> for <b>{{lesson.price}}</b> pounds
+
+                        <button @click="removeLesson(index)"> Remove </button>
+
+                    </li>
+
+
+
+                </ul>
+
+            </div>
+
 
             <p>
                 <strong>Name:</strong>
@@ -147,7 +183,25 @@
                 classesLeft(lesson) {
                     return lesson.availableSpaces - this.cartCount(lesson.id);
 
-                }
+                },
+                removeLesson(index) {
+
+                    // for (i = 0; i < this.cart.length; i++) {
+                    //     if (this.cart[i] === item) {
+                            
+                    //         delete this.cart[i];
+                    //     }
+                    // }
+
+                        this.cart.splice(index,1);
+
+                    // return cart.remove(item);
+
+
+                },
+            
+
+
 
 
             },
@@ -166,7 +220,11 @@
                     }
                     return this.lessons.sort(compare);
 
-                }
+                },
+                canCheckout() {
+                    return this.cart.length > 0;
+
+                },
 
 
             }
