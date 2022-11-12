@@ -34,12 +34,34 @@
 
         <div v-if="showProduct" class="float_container">
 
-
-
-
             <main>
 
-                <div v-for="lesson in sortedLessons" class="float_child">
+                
+
+                <div class="search-wrapper">
+                    <input type="text" v-model="search" placeholder="Search..." />
+                    <!-- <label>Search title:</label> -->
+                </div>
+ 
+                
+
+                <div>
+
+                    <h2>Sort by:</h2>
+                    <ul>
+                        <li @click="sort('title')" v-bind:class="[sortBy === 'title' ? sortDirection : '']"> Subject
+                        </li>
+                        <li @click="sort('location')" v-bind:class="[sortBy === 'location' ? sortDirection : '']">
+                            Location</li>
+                        <li @click="sort('price')" v-bind:class="[sortBy === 'price' ? sortDirection : '']"> Price</li>
+                        <li @click="sort('spacesLeftUpdate')"
+                            v-bind:class="[sortBy === 'spacesLeftUpdate' ? sortDirection : '']"> Availability</li>
+                    </ul>
+
+                </div>
+
+
+                <div v-for="lesson in sortedLessons, filteredList" class="float_child">
 
                     <figure>
                         <img v-bind:src="lesson.image" width="100px" height="=100px">
@@ -83,19 +105,6 @@
         <div v-else>
 
             <h2> Here are the lessons you have picked: </h2>
-
-
-            <!-- <ul>
-                    <li v-for="lesson in cart" :key="lesson.title">
-                         <p v-text="lesson.title"> class at {{lesson.location}}</p> 
-
-                        <p><b>{{lesson.title}}</b> class at <b>{{lesson.location}}</b> for <b>{{lesson.price}}</b> pounds
-                        
-                            <button @click="removeLesson(lesson)"> Remove </button> 
-                        
-                        </p>
-                    </li>
-                </ul> -->
 
 
             <div v-for="lesson in lessons">
@@ -150,11 +159,15 @@
                 sitename: "After School Club",
                 showProduct: true,
 
+                search: '',
+
                 lessons: lessons,
 
                 cart: [],
 
-
+                sortBy: 'name',
+                sortDirection: 'asc',
+                //spacesLeftUpdate: 0,
 
                 order: {
                     errors: [],
@@ -205,6 +218,8 @@
 
                 },
                 classesLeft(lesson) {
+                    //this.lesson.splice(spacesLeftUpdate,1,lesson.availableSpaces - this.cartCount(lesson.id));
+
                     return lesson.availableSpaces - this.cartCount(lesson.id);
 
                 },
@@ -213,7 +228,14 @@
                     this.cart.splice(index, 1);
 
                 },
-            
+                sort(s) {
+                    if (s === this.sortBy) {
+                        this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+                    }
+
+                    this.sortBy = s;
+                }
+
 
             },
             computed: {
@@ -221,15 +243,26 @@
                     return this.cart.length || " ";
 
                 },
-                sortedLessons() {
+                /* sortedLessons() {
 
                     function compare(a, b) {
-                        if (a.price > b.price) return -1;
-                        if (a.price < b.price) return 1;
+                        if (a.price > b.price) return 1;
+                        if (a.price < b.price) return -1;
                         return 0;
 
                     }
                     return this.lessons.sort(compare);
+
+                }, */
+
+                sortedLessons() {
+
+                    return this.lessons.sort((p1, p2) => {
+                        let modifier = 1;
+                        if (this.sortDirection === 'desc') modifier = -1;
+                        if (p1[this.sortBy] < p2[this.sortBy]) return -1 * modifier; if (p1[this.sortBy] > p2[this.sortBy]) return 1 * modifier;
+                        return 0;
+                    });
 
                 },
                 canCheckout() {
@@ -257,6 +290,11 @@
                         return true;
                     }
 
+                },
+                filteredList() {
+                    return this.lessons.filter(post => {
+                        return post.title.toLowerCase().includes(this.search.toLowerCase())
+                    })
                 }
 
 

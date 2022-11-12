@@ -8,7 +8,8 @@ let lessons = [
         "price": 100,
         "image": "/images/math_icon.png",
         "availableSpaces":5,
-        "rating": 2
+        "rating": 2,
+        "spacesLeftUpdate": 5,
      },
 
      {
@@ -19,7 +20,8 @@ let lessons = [
         "price": 155,
         "image": "/images/spanish_icon.png",
         "availableSpaces":5,
-        "rating": 3
+        "rating": 3,
+        "spacesLeftUpdate": 5,
         
      },
 
@@ -31,7 +33,8 @@ let lessons = [
         "price": 200,
         "image": "/images/cooking_icon.png",
         "availableSpaces":5,
-        "rating": 4
+        "rating": 4,
+        "spacesLeftUpdate": 5,
         
      },
 
@@ -43,7 +46,8 @@ let lessons = [
         "price": 175,
         "image": "/images/art_icon.png",
         "availableSpaces":5,
-        "rating": 5
+        "rating": 5,
+        "spacesLeftUpdate": 5,
         
      },
 
@@ -55,7 +59,8 @@ let lessons = [
         "price": 140,
         "image": "/images/biology_icon.png",
         "availableSpaces":5,
-        "rating": 1
+        "rating": 1,
+        "spacesLeftUpdate": 5,
         
      },
 
@@ -67,7 +72,8 @@ let lessons = [
         "price": 130,
         "image": "/images/chemistry_icon.png",
         "availableSpaces":5,
-        "rating": 2
+        "rating": 2,
+        "spacesLeftUpdate": 5,
         
      },
 
@@ -79,7 +85,8 @@ let lessons = [
         "price": 120,
         "image": "/images/geography_icon.png",
         "availableSpaces":5,
-        "rating": 3
+        "rating": 3,
+        "spacesLeftUpdate": 5,
         
      },
 
@@ -91,7 +98,8 @@ let lessons = [
         "price": 100,
         "image": "/images/history_icon.png",
         "availableSpaces":5,
-        "rating": 1
+        "rating": 1,
+        "spacesLeftUpdate": 5,
         
      },
 
@@ -103,7 +111,8 @@ let lessons = [
         "price": 165,
         "image": "/images/photography_icon.png",
         "availableSpaces":5,
-        "rating": 5
+        "rating": 5,
+        "spacesLeftUpdate": 5,
         
      },
 
@@ -115,7 +124,8 @@ let lessons = [
         "price": 170,
         "image": "/images/physics_icon.png",
         "availableSpaces":5,
-        "rating": 1
+        "rating": 1,
+        "spacesLeftUpdate": 5,
         
      },
 
@@ -127,7 +137,8 @@ let lessons = [
         "price": 200,
         "image": "/images/business_icon.png",
         "availableSpaces":5,
-        "rating": 3
+        "rating": 3,
+        "spacesLeftUpdate": 5,
         
      },
 
@@ -139,7 +150,8 @@ let lessons = [
         "price": 125,
         "image": "/images/zoology_icon.png",
         "availableSpaces":5,
-        "rating": 2
+        "rating": 2,
+        "spacesLeftUpdate": 5,
         
      },
 
