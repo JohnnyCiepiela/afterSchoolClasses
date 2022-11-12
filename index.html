@@ -117,6 +117,14 @@
             </div>
 
 
+            <p v-if="order.errors.length">
+                <b>Please correct the following error(s):</b>
+            <ul>
+                <li v-for="error in order.errors">{{ error }}</li>
+            </ul>
+            </p>
+
+
             <p>
                 <strong>Name:</strong>
                 <input type="text" v-model.trim="order.name">
@@ -127,9 +135,7 @@
                 <input type="text" v-model.trim="order.phone_number">
             </p>
 
-
-            <!--<button v-on:click="submitCheckoutForm">Place the order</button>-->
-            <button @click="submitCheckoutForm">Place the order</button>
+            <button @click="submitCheckoutForm" v-bind:disabled="!canSubmitDetails">Place your order</button>
 
 
         </div>
@@ -148,9 +154,13 @@
 
                 cart: [],
 
+
+
                 order: {
-                    name: " ",
-                    phone_number: " ",
+                    errors: [],
+
+                    name: null,
+                    phone_number: null,
                 },
             },
             //Functionality
@@ -164,7 +174,21 @@
 
                 },
                 submitCheckoutForm() {
-                    alert("You have placed your order!");
+
+                    alert("Thank you for submitting your order!");
+
+                },
+                validName(name) {
+                    var name_regex = /^[a-zA-Z]+$/;
+                    return name_regex.test(name);
+
+
+                },
+                validNumber(phone_number) {
+                    var phone_regex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+                    return phone_regex.test(phone_number);
+
+
                 },
                 canAddToCart(lesson) {
                     return lesson.availableSpaces > this.cartCount(lesson.id);
@@ -186,23 +210,10 @@
                 },
                 removeLesson(index) {
 
-                    // for (i = 0; i < this.cart.length; i++) {
-                    //     if (this.cart[i] === item) {
-                            
-                    //         delete this.cart[i];
-                    //     }
-                    // }
-
-                        this.cart.splice(index,1);
-
-                    // return cart.remove(item);
-
+                    this.cart.splice(index, 1);
 
                 },
             
-
-
-
 
             },
             computed: {
@@ -225,6 +236,28 @@
                     return this.cart.length > 0;
 
                 },
+                canSubmitDetails() {
+                    this.order.errors = [];
+
+                    if (!this.order.name) {
+                        //alert("Name required!")
+                        this.order.errors.push('Name required.');
+                    } else if (!this.validName(this.order.name)) {
+                        this.order.errors.push("The name can be letters only!");
+
+                    }
+                    if (!this.order.phone_number) {
+                        //alert("Phone number required!")
+                        this.order.errors.push('Phone required.');
+                    } else if (!this.validNumber(this.order.phone_number)) {
+                        this.order.errors.push("Valid phone number required in format XXX XXX XXXX, numbers only!");
+
+                    }
+                    else {
+                        return true;
+                    }
+
+                }
 
 
             }
