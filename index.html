@@ -23,12 +23,44 @@
             <h1>After School Club</h1>
         </header>
 
-        <!--Switching from main page to checkout page-->
-        <button @click="toggleShowProduct" v-bind:disabled="!canCheckout">
-            {{totalItemsInTheCart}}
-            <span class="fas fa-shopping-cart"></span>
-            Checkout
-        </button>
+        <div class="upperNavigation">
+
+
+            <div class="checkout_button">
+                <!--Switching from main page to checkout page-->
+                <button @click="toggleShowProduct" v-bind:disabled="!canCheckout">
+                    {{totalItemsInTheCart}}
+                    <span class="fas fa-shopping-cart"></span>
+                    Checkout
+                </button>
+            </div>
+
+
+
+            <div class="search_bar">
+                <input type="text" v-model="search" placeholder="Search..." />
+                <!-- <label>Search title:</label> -->
+            </div>
+
+
+
+            <div class="sort_section">
+
+                <h2>Sort by:</h2>
+                <ul>
+                    <li @click="sort('title')" v-bind:class="[sortBy === 'title' ? sortDirection : '']"> Subject
+                    </li>
+                    <li @click="sort('location')" v-bind:class="[sortBy === 'location' ? sortDirection : '']">
+                        Location</li>
+                    <li @click="sort('price')" v-bind:class="[sortBy === 'price' ? sortDirection : '']"> Price
+                    </li>
+                    <li @click="sort('spacesLeftUpdate')"
+                        v-bind:class="[sortBy === 'spacesLeftUpdate' ? sortDirection : '']"> Availability</li>
+                </ul>
+
+            </div>
+
+        </div>
 
 
 
@@ -36,29 +68,7 @@
 
             <main>
 
-                
 
-                <div class="search-wrapper">
-                    <input type="text" v-model="search" placeholder="Search..." />
-                    <!-- <label>Search title:</label> -->
-                </div>
- 
-                
-
-                <div>
-
-                    <h2>Sort by:</h2>
-                    <ul>
-                        <li @click="sort('title')" v-bind:class="[sortBy === 'title' ? sortDirection : '']"> Subject
-                        </li>
-                        <li @click="sort('location')" v-bind:class="[sortBy === 'location' ? sortDirection : '']">
-                            Location</li>
-                        <li @click="sort('price')" v-bind:class="[sortBy === 'price' ? sortDirection : '']"> Price</li>
-                        <li @click="sort('spacesLeftUpdate')"
-                            v-bind:class="[sortBy === 'spacesLeftUpdate' ? sortDirection : '']"> Availability</li>
-                    </ul>
-
-                </div>
 
 
                 <div v-for="lesson in sortedLessons, filteredList" class="float_child">
@@ -127,7 +137,7 @@
 
 
             <p v-if="order.errors.length">
-                <b>Please correct the following error(s):</b>
+                <b>Please consider the following requirements:</b>
             <ul>
                 <li v-for="error in order.errors">{{ error }}</li>
             </ul>
@@ -292,10 +302,16 @@
 
                 },
                 filteredList() {
-                    return this.lessons.filter(post => {
-                        return post.title.toLowerCase().includes(this.search.toLowerCase())
+                    return this.lessons.filter(lesson => {
+                        return lesson.title.toLowerCase().includes(this.search.toLowerCase()) || lesson.location.toLowerCase().includes(this.search.toLowerCase())
                     })
-                }
+                },
+                /* cartEmpty() {
+                   if (this.cart.length === 0) {
+                       this.showProduct === true;
+                   }
+
+               }  */
 
 
             }
