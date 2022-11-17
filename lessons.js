@@ -6,10 +6,9 @@ let lessons = [
         "location": "Hendon",
         "description": "Acquisition of new knowledge, skills, and affects that are related to quantity.",
         "price": 100,
-        "image": "/images/math_icon.png",
-        "availableSpaces":5,
-        "rating": 2,
-        "spacesLeftUpdate": 5,
+        "image": "images/math_icon.png",
+        "availableSpaces":10,
+        "rating": 2
      },
 
      {
@@ -18,11 +17,9 @@ let lessons = [
         "location": "Colindale",
         "description": "Covering basic topics like pronunciation and accent marks.",
         "price": 155,
-        "image": "/images/spanish_icon.png",
-        "availableSpaces":5,
-        "rating": 3,
-        "spacesLeftUpdate": 5,
-        
+        "image": "images/spanish_icon.png",
+        "availableSpaces":11,
+        "rating": 3
      },
 
      {
@@ -32,10 +29,8 @@ let lessons = [
         "description": "Appropriate terminology that will help you read and understand recipe preparations.",
         "price": 200,
         "image": "/images/cooking_icon.png",
-        "availableSpaces":5,
-        "rating": 4,
-        "spacesLeftUpdate": 5,
-        
+        "availableSpaces":8,
+        "rating": 4
      },
 
      {
@@ -46,9 +41,7 @@ let lessons = [
         "price": 175,
         "image": "/images/art_icon.png",
         "availableSpaces":5,
-        "rating": 5,
-        "spacesLeftUpdate": 5,
-        
+        "rating": 5
      },
 
      {
@@ -58,10 +51,8 @@ let lessons = [
         "description": "A study of living organisms and vital processes.",
         "price": 140,
         "image": "/images/biology_icon.png",
-        "availableSpaces":5,
-        "rating": 1,
-        "spacesLeftUpdate": 5,
-        
+        "availableSpaces":6,
+        "rating": 1
      },
 
      {
@@ -71,10 +62,8 @@ let lessons = [
         "description": "The study of matter, including its composition, properties, and structure.",
         "price": 130,
         "image": "/images/chemistry_icon.png",
-        "availableSpaces":5,
-        "rating": 2,
-        "spacesLeftUpdate": 5,
-        
+        "availableSpaces":7,
+        "rating": 2
      },
 
      {
@@ -84,10 +73,8 @@ let lessons = [
         "description": "Simple maps with familiar landmarks to help students understand map terminology.",
         "price": 120,
         "image": "/images/geography_icon.png",
-        "availableSpaces":5,
-        "rating": 3,
-        "spacesLeftUpdate": 5,
-        
+        "availableSpaces":8,
+        "rating": 3
      },
 
      {
@@ -97,10 +84,8 @@ let lessons = [
         "description": "The study of change over time that covers all aspects of human society.",
         "price": 100,
         "image": "/images/history_icon.png",
-        "availableSpaces":5,
-        "rating": 1,
-        "spacesLeftUpdate": 5,
-        
+        "availableSpaces":9,
+        "rating": 1
      },
 
      {
@@ -110,10 +95,8 @@ let lessons = [
         "description": "Capturing images that communicate to the viewers.",
         "price": 165,
         "image": "/images/photography_icon.png",
-        "availableSpaces":5,
-        "rating": 5,
-        "spacesLeftUpdate": 5,
-        
+        "availableSpaces":10,
+        "rating": 5
      },
 
      {
@@ -123,10 +106,8 @@ let lessons = [
         "description": "Branch of science that deals with the structure of matter.",
         "price": 170,
         "image": "/images/physics_icon.png",
-        "availableSpaces":5,
-        "rating": 1,
-        "spacesLeftUpdate": 5,
-        
+        "availableSpaces":8,
+        "rating": 1
      },
 
      {
@@ -136,10 +117,8 @@ let lessons = [
         "description": "Class focuses on business terminology and related topics as well as corporate culture.",
         "price": 220,
         "image": "/images/business_icon.png",
-        "availableSpaces":5,
-        "rating": 3,
-        "spacesLeftUpdate": 5,
-        
+        "availableSpaces":9,
+        "rating": 3
      },
 
      {
@@ -149,10 +128,8 @@ let lessons = [
         "description": "A course that will survey the nine major phyla of the kingdom Animalia.",
         "price": 125,
         "image": "/images/zoology_icon.png",
-        "availableSpaces":5,
-        "rating": 2,
-        "spacesLeftUpdate": 5,
-        
+        "availableSpaces":11,
+        "rating": 2
      },
 
 

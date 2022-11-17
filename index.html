@@ -23,28 +23,27 @@
             <h1>After School Club</h1>
         </header>
 
-        <div class="upperNavigation">
+        <!-- <div class="upperNavigation"> -->
 
 
-            <div class="checkout_button">
-                <!--Switching from main page to checkout page-->
-                <button @click="toggleShowProduct" v-bind:disabled="!canCheckout">
-                    {{totalItemsInTheCart}}
-                    <span class="fas fa-shopping-cart"></span>
-                    Checkout
-                </button>
-            </div>
+        <div class="checkout_button">
+            <!--Switching from main page to checkout page-->
+            <button @click="toggleShowProduct" v-bind:disabled="!canCheckout">
+                {{totalItemsInTheCart}}
+                <span class="fas fa-shopping-cart"></span>
+                Checkout
+            </button>
+        </div>
 
 
+        <div v-if="showProduct" class="sort_and_search">
 
             <div class="search_bar">
                 <input type="text" v-model="search" placeholder="Search..." />
-                <!-- <label>Search title:</label> -->
             </div>
 
-
-
             <div class="sort_section">
+
 
                 <h2>Sort by:</h2>
                 <ul>
@@ -54,22 +53,21 @@
                         Location</li>
                     <li @click="sort('price')" v-bind:class="[sortBy === 'price' ? sortDirection : '']"> Price
                     </li>
-                    <li @click="sort('spacesLeftUpdate')"
-                        v-bind:class="[sortBy === 'spacesLeftUpdate' ? sortDirection : '']"> Availability</li>
+                    <li @click="sort('availableSpaces')"
+                        v-bind:class="[sortBy === 'availableSpaces' ? sortDirection : '']"> Availability</li>
                 </ul>
 
             </div>
 
         </div>
 
+        <!-- </div> -->
+
 
 
         <div v-if="showProduct" class="float_container">
 
             <main>
-
-
-
 
                 <div v-for="lesson in sortedLessons, filteredList" class="float_child">
 
@@ -93,7 +91,7 @@
                     <span v-if="classesLeft(lesson) === 0">
                         All out!</span>
 
-                    <span v-else-if="classesLeft(lesson) < 3">
+                    <span v-else-if="classesLeft(lesson) < 4">
                         Only {{classesLeft(lesson)}} left!</span>
 
                     <span v-else>
@@ -112,7 +110,8 @@
 
         </div>
 
-        <div v-else>
+        
+        <div v-else >
 
             <h2> Here are the lessons you have picked: </h2>
 
@@ -228,8 +227,6 @@
 
                 },
                 classesLeft(lesson) {
-                    //this.lesson.splice(spacesLeftUpdate,1,lesson.availableSpaces - this.cartCount(lesson.id));
-
                     return lesson.availableSpaces - this.cartCount(lesson.id);
 
                 },
@@ -253,18 +250,6 @@
                     return this.cart.length || " ";
 
                 },
-                /* sortedLessons() {
-
-                    function compare(a, b) {
-                        if (a.price > b.price) return 1;
-                        if (a.price < b.price) return -1;
-                        return 0;
-
-                    }
-                    return this.lessons.sort(compare);
-
-                }, */
-
                 sortedLessons() {
 
                     return this.lessons.sort((p1, p2) => {

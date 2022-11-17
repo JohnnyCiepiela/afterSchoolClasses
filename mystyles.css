@@ -8,6 +8,11 @@ body {
 
 }
 
+.checkout_page {
+    text-align: center;
+
+}
+
 .float_container {
     /* border: 1px solid rgb(52, 43, 43); */
     padding: 50px;
