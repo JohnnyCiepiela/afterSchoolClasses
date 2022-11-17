@@ -6,7 +6,7 @@ let lessons = [
         "location": "Hendon",
         "description": "Acquisition of new knowledge, skills, and affects that are related to quantity.",
         "price": 100,
-        "image": "/images/math_icon.png",
+        "image": "images/math_icon.png",
         "availableSpaces":10,
         "rating": 2
      },
@@ -17,7 +17,7 @@ let lessons = [
         "location": "Colindale",
         "description": "Covering basic topics like pronunciation and accent marks.",
         "price": 155,
-        "image": "/images/spanish_icon.png",
+        "image": "images/spanish_icon.png",
         "availableSpaces":11,
         "rating": 3
      },
@@ -28,7 +28,7 @@ let lessons = [
         "location": "Harrow",
         "description": "Appropriate terminology that will help you read and understand recipe preparations.",
         "price": 200,
-        "image": "/images/cooking_icon.png",
+        "image": "images/cooking_icon.png",
         "availableSpaces":8,
         "rating": 4
      },
@@ -39,7 +39,7 @@ let lessons = [
         "location": "Wembley",
         "description": "The skills of making objects for decoration and practical uses by hand.",
         "price": 175,
-        "image": "/images/art_icon.png",
+        "image": "images/art_icon.png",
         "availableSpaces":5,
         "rating": 5
      },
@@ -50,7 +50,7 @@ let lessons = [
         "location": "Statford",
         "description": "A study of living organisms and vital processes.",
         "price": 140,
-        "image": "/images/biology_icon.png",
+        "image": "images/biology_icon.png",
         "availableSpaces":6,
         "rating": 1
      },
@@ -61,7 +61,7 @@ let lessons = [
         "location": "Kensington",
         "description": "The study of matter, including its composition, properties, and structure.",
         "price": 130,
-        "image": "/images/chemistry_icon.png",
+        "image": "images/chemistry_icon.png",
         "availableSpaces":7,
         "rating": 2
      },
@@ -72,7 +72,7 @@ let lessons = [
         "location": "South Kensington",
         "description": "Simple maps with familiar landmarks to help students understand map terminology.",
         "price": 120,
-        "image": "/images/geography_icon.png",
+        "image": "images/geography_icon.png",
         "availableSpaces":8,
         "rating": 3
      },
@@ -83,7 +83,7 @@ let lessons = [
         "location": "Greenwich",
         "description": "The study of change over time that covers all aspects of human society.",
         "price": 100,
-        "image": "/images/history_icon.png",
+        "image": "images/history_icon.png",
         "availableSpaces":9,
         "rating": 1
      },
@@ -94,7 +94,7 @@ let lessons = [
         "location": "Camden",
         "description": "Capturing images that communicate to the viewers.",
         "price": 165,
-        "image": "/images/photography_icon.png",
+        "image": "images/photography_icon.png",
         "availableSpaces":10,
         "rating": 5
      },
@@ -105,7 +105,7 @@ let lessons = [
         "location": "Hackney",
         "description": "Branch of science that deals with the structure of matter.",
         "price": 170,
-        "image": "/images/physics_icon.png",
+        "image": "images/physics_icon.png",
         "availableSpaces":8,
         "rating": 1
      },
@@ -116,7 +116,7 @@ let lessons = [
         "location": "Islington",
         "description": "Class focuses on business terminology and related topics as well as corporate culture.",
         "price": 220,
-        "image": "/images/business_icon.png",
+        "image": "images/business_icon.png",
         "availableSpaces":9,
         "rating": 3
      },
@@ -127,7 +127,7 @@ let lessons = [
         "location": "Hounslow",
         "description": "A course that will survey the nine major phyla of the kingdom Animalia.",
         "price": 125,
-        "image": "/images/zoology_icon.png",
+        "image": "images/zoology_icon.png",
         "availableSpaces":11,
         "rating": 2
      },
