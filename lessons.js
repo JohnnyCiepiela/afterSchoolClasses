@@ -6,7 +6,7 @@ let lessons = [
         "location": "Hendon",
         "description": "Acquisition of new knowledge, skills, and affects that are related to quantity.",
         "price": 100,
-        "image": "images/math_icon.png",
+        "image": "/images/math_icon.png",
         "availableSpaces":10,
         "rating": 2
      },
@@ -17,7 +17,7 @@ let lessons = [
         "location": "Colindale",
         "description": "Covering basic topics like pronunciation and accent marks.",
         "price": 155,
-        "image": "images/spanish_icon.png",
+        "image": "/images/spanish_icon.png",
         "availableSpaces":11,
         "rating": 3
      },
