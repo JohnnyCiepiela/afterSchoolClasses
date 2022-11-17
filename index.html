@@ -23,12 +23,10 @@
             <h1>After School Club</h1>
         </header>
 
-        <!-- <div class="upperNavigation"> -->
-
 
         <div class="checkout_button">
             <!--Switching from main page to checkout page-->
-            <button @click="toggleShowProduct" v-bind:disabled="!canCheckout">
+            <button @click="toggleShowProduct" v-bind:disabled="!canCheckout" class="checkout_button2">
                 {{totalItemsInTheCart}}
                 <span class="fas fa-shopping-cart"></span>
                 Checkout
@@ -39,7 +37,7 @@
         <div v-if="showProduct" class="sort_and_search">
 
             <div class="search_bar">
-                <input type="text" v-model="search" placeholder="Search..." />
+                <input class="searchbar" type="text" v-model="search" placeholder="Search..." />
             </div>
 
             <div class="sort_section">
@@ -60,8 +58,6 @@
             </div>
 
         </div>
-
-        <!-- </div> -->
         
 
         <div v-if="showProduct" class="float_container">
@@ -110,17 +106,19 @@
         </div>
 
 
-        <div v-else >
+        <div v-else class="checkout_page">
 
-            <h2> Here are the lessons you have picked: </h2>
+            <h2 class="fixed"> .... </h2>
+            <h2 class="fixed"> .... </h2>
+            <h2 class="checkout_lessons"> Here are the lessons you have picked: </h2>
 
 
-            <div v-for="lesson in lessons">
+            <div v-for="lesson in lessons" class="inner_lessons">
 
                 <ul v-for="(item,index) in cart">
 
 
-                    <li v-if="lesson.id === item">
+                    <li v-if="lesson.id === item" class="checkout_page">
                         <b>{{lesson.title}}</b> class at <b>{{lesson.location}}</b> for <b>{{lesson.price}}</b> pounds
 
                         <button @click="removeLesson(index)"> Remove </button>
