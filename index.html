@@ -33,37 +33,38 @@
             </button>
         </div>
 
-
+        <!--Sorting and search bar html section-->
         <div v-if="showProduct" class="sort_and_search">
 
+            <!--Searching-->
             <div class="search_bar">
                 <input class="searchbar" type="text" v-model="search" placeholder="Search..." />
             </div>
 
+            <!--Sorting-->
             <div class="sort_section">
-
-
                 <h2>Sort by:</h2>
                 <ul>
-                    <li @click="sort('title')" v-bind:class="[sortBy === 'title' ? sortDirection : '']"> Subject
-                    </li>
+                    <li @click="sort('title')" v-bind:class="[sortBy === 'title' ? sortDirection : '']">
+                        Subject</li>
                     <li @click="sort('location')" v-bind:class="[sortBy === 'location' ? sortDirection : '']">
                         Location</li>
-                    <li @click="sort('price')" v-bind:class="[sortBy === 'price' ? sortDirection : '']"> Price
-                    </li>
+                    <li @click="sort('price')" v-bind:class="[sortBy === 'price' ? sortDirection : '']">
+                        Price</li>
                     <li @click="sort('availableSpaces')"
-                        v-bind:class="[sortBy === 'availableSpaces' ? sortDirection : '']"> Availability</li>
+                        v-bind:class="[sortBy === 'availableSpaces' ? sortDirection : '']">
+                        Availability</li>
                 </ul>
-
             </div>
 
         </div>
-        
+
 
         <div v-if="showProduct" class="float_container">
 
             <main>
 
+                <!--Product display of the available lessons-->
                 <div v-for="lesson in sortedLessons, filteredList" class="float_child">
 
                     <figure>
@@ -75,14 +76,12 @@
                     <p><b>Description:</b> {{ lesson.description }}</p>
                     <p><b>Price:</b> {{lesson.price}}</p>
 
-
-
                     <button v-on:click="addItemToCart(lesson)" v-if="canAddToCart(lesson)">
                         Add to the Cart</button>
 
-
                     <button v-else disabled>Add to the Cart</button>
 
+                    <!--Conditions regarding the product availability display-->
                     <span v-if="classesLeft(lesson) === 0">
                         All out!</span>
 
@@ -92,6 +91,7 @@
                     <span v-else>
                         Buy now!</span>
 
+                    <!--Simple rating system-->
                     <div>
                         <span v-for="n in lesson.rating"> ★ </span>
                         <span v-for="n in 5 - lesson.rating"> ☆ </span>
@@ -112,26 +112,20 @@
             <h2 class="fixed"> .... </h2>
             <h2 class="checkout_lessons"> Here are the lessons you have picked: </h2>
 
-
+            <!--Listing the lessons chosen by the user-->
             <div v-for="lesson in lessons" class="inner_lessons">
 
                 <ul v-for="(item,index) in cart">
-
-
                     <li v-if="lesson.id === item" class="checkout_page">
                         <b>{{lesson.title}}</b> class at <b>{{lesson.location}}</b> for <b>{{lesson.price}}</b> pounds
 
                         <button @click="removeLesson(index)"> Remove </button>
-
                     </li>
-
-
-
                 </ul>
 
             </div>
 
-
+            <!--User input validation container-->
             <p v-if="order.errors.length">
                 <b>Please consider the following requirements:</b>
             <ul>
@@ -161,19 +155,20 @@
         let webstore = new Vue({
             el: "#app",
             data: {
-                //The values of the product
+                //Site values
                 sitename: "After School Club",
+                //Toggling value
                 showProduct: true,
-
+                //Search helper value
                 search: '',
-
+                //Accessing the "lessons.js" array
                 lessons: lessons,
-
+                //Main cart array
                 cart: [],
-
+                //Sorting helper values
                 sortBy: 'name',
                 sortDirection: 'asc',
-
+                //Input validation helper values
                 order: {
                     errors: [],
 
@@ -192,22 +187,20 @@
 
                 },
                 submitCheckoutForm() {
-
                     alert("Thank you for submitting your order!");
 
                 },
+
+                //Input validation methods
                 validName(name) {
                     var name_regex = /^[a-zA-Z]+$/;
                     return name_regex.test(name);
-
-
                 },
                 validNumber(phone_number) {
                     var phone_regex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
                     return phone_regex.test(phone_number);
-
-
                 },
+
                 canAddToCart(lesson) {
                     return lesson.availableSpaces > this.cartCount(lesson.id);
                 },
@@ -220,17 +213,16 @@
 
                     }
                     return count;
-
                 },
                 classesLeft(lesson) {
                     return lesson.availableSpaces - this.cartCount(lesson.id);
 
                 },
                 removeLesson(index) {
-
                     this.cart.splice(index, 1);
-
                 },
+
+                //Sorting method
                 sort(s) {
                     if (s === this.sortBy) {
                         this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
@@ -246,6 +238,8 @@
                     return this.cart.length || " ";
 
                 },
+
+                //Sorting computed property
                 sortedLessons() {
 
                     return this.lessons.sort((p1, p2) => {
@@ -254,24 +248,23 @@
                         if (p1[this.sortBy] < p2[this.sortBy]) return -1 * modifier; if (p1[this.sortBy] > p2[this.sortBy]) return 1 * modifier;
                         return 0;
                     });
-
                 },
+
                 canCheckout() {
                     return this.cart.length > 0;
-
                 },
+
+                //Computed properties for displaying user input requirements
                 canSubmitDetails() {
                     this.order.errors = [];
 
                     if (!this.order.name) {
-                        //alert("Name required!")
                         this.order.errors.push('Name required.');
                     } else if (!this.validName(this.order.name)) {
                         this.order.errors.push("The name can be letters only!");
 
                     }
                     if (!this.order.phone_number) {
-                        //alert("Phone number required!")
                         this.order.errors.push('Phone required.');
                     } else if (!this.validNumber(this.order.phone_number)) {
                         this.order.errors.push("Valid phone number required in format XXX XXX XXXX, numbers only!");
@@ -280,19 +273,21 @@
                     else {
                         return true;
                     }
-
                 },
+
+                //Computed property for the search bar
                 filteredList() {
                     return this.lessons.filter(lesson => {
                         return lesson.title.toLowerCase().includes(this.search.toLowerCase()) || lesson.location.toLowerCase().includes(this.search.toLowerCase())
                     })
                 },
-                /* cartEmpty() {
-                   if (this.cart.length === 0) {
-                       this.showProduct === true;
-                   }
+                //Trying to refine the functionality of the cart
+                cartEmpty() {
+                    if (this.cart.length === 0) {
+                        return toggleShowProduct();
+                    }
 
-               }  */
+                }
 
 
             }

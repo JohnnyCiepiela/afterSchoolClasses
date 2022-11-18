@@ -6,57 +6,46 @@ header {
     font-size: 150%;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     text-shadow: 2px 2px #000000;
-    color:bisque
+    color:bisque;
 }
 
 body {
     background-color: bisque;
-
 }
 
 .checkout_page {
     text-align: center;
     list-style-position: inside;
-
 }
 
 .checkout_button {
     width:100%;
-
 }
 
 .inner_lessons {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    background-color: beige;
-    
+    background-color: beige; 
 }
 
 .float_container {
-    /* border: 1px solid rgb(52, 43, 43); */
     padding: 50px;
     height:1700px;
-    /*text-align: center; */
     margin: auto;
-  width: 80%;
+    width: 80%;
 }
 
 .float_child {
     width:25%;
     float: left;
     padding: 20px;
-    /* border: 1px solid rgb(70, 67, 67); */
     margin:10px;
     background-color: beige;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     font-family: Garamond;
-
 }
 
 .all_classes {
     margin:auto;
-
-
-
 }
 
 .checkout_button {
@@ -69,7 +58,6 @@ body {
     font-size: 16px;
     height:50px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
 }
 
 .checkout_button2 {
@@ -81,10 +69,11 @@ body {
     cursor: pointer;
     font-size: 16px;
     height:50px;
-    
 }
 
-.fixed {color:bisque}
+.fixed {
+    color:bisque;
+}
 
 .search_bar {
     float:left;
@@ -107,11 +96,11 @@ body {
 }
 
 .asc:after{
-    content: "\25B2"
+    content: "\25B2";
 }
 
 .desc:after{
-    content: "\25BC"
+    content: "\25BC";
 }
 
 
